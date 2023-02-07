@@ -9,7 +9,7 @@ export const handler = async (event) => {
       var memberName = data[i];
      
       if (memberName.members.name == event.rawQuery) {
-        let res2 = await fetch(`https://whois.fdnd.nl/api/v1/members?id=` + memberName.members.id);
+        let res2 = await fetch(`https://whois.fdnd.nl/api/v1/member?id=` + memberName.members.id);
         let data2 = await res2.json();
         
         return {
