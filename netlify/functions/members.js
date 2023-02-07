@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 
 exports.handler = async (event) => {
 
-    let res = await fetch(`https://whois.fdnd.nl/api/v1/members`)
+    let res = await fetch(`https://whois.fdnd.nl/api/v1/members?first=200`)
     let data = await res.json();
 
     for (var i = 0; i < data.length; ++i) {
