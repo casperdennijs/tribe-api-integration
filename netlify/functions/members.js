@@ -11,20 +11,21 @@ export const handler = async (event) => {
       if (memberName.members.name == event.rawQuery) {
         let res2 = await fetch(`https://whois.fdnd.nl/api/v1/members?id=` + memberName.members.id);
         let data2 = await res2.json();
+        
+        return {
+          statusCode: 200,
+          headers: {
+            /* Required for CORS support to work */
+            'Access-Control-Allow-Origin': '*',
+            /* Required for cookies, authorization headers with HTTPS */
+            'Access-Control-Allow-Credentials': true
+          },
+          body: JSON.stringify({
+            data: data2
+          })
+        }
+
         break;
       }
-    }
-
-    return {
-      statusCode: 200,
-      headers: {
-        /* Required for CORS support to work */
-        'Access-Control-Allow-Origin': '*',
-        /* Required for cookies, authorization headers with HTTPS */
-        'Access-Control-Allow-Credentials': true
-      },
-      body: JSON.stringify({
-        data: data2
-      })
     }
   }
