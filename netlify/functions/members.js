@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 
-export const handler = async (event) => {
+exports.handler = async (event) => {
 
     let res = await fetch(`https://whois.fdnd.nl/api/v1/members`)
     let data = await res.json();
@@ -24,7 +24,6 @@ export const handler = async (event) => {
             data: data2
           })
         }
-
         break;
       }
     }
